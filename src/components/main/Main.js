@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./mainStyle.css";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Form, Card } from "react-bootstrap";
+import { Form, Card, Container } from "react-bootstrap";
 
 function Main(props) {
   // window.addEventListener("scroll", () => {
@@ -16,6 +16,11 @@ function Main(props) {
   //     props.scrolling();
   //   }
   // });
+
+  const toggleFavorite = (fav) => {
+    props.addFavItems(fav);
+  };
+
   return (
     <InfiniteScroll
       dataLength={props.data.length}
@@ -42,7 +47,15 @@ function Main(props) {
                 <Card.Text className="card-text-body">
                   {items.description}
                 </Card.Text>
-                <Form.Check type="checkbox" label="favorite" />
+                <Container>
+                  <Form.Check
+                    type="checkbox"
+                    label="favorite"
+                    onClick={() => {
+                      toggleFavorite(items);
+                    }}
+                  />
+                </Container>
               </Card.Body>
             </Card>
           );

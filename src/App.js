@@ -9,6 +9,18 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 function App() {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  const [favItems, setFavItems] = useState([]);
+
+  const addFavItems = (addFav) => {
+    if (favItems || !favItems.includes(addFav.id)) {
+      setFavItems((pre) => [...pre, addFav]);
+    } else {
+      let newfav = favItems.filter((x) => {
+        return x.id !== addFav.id;
+      });
+      setFavItems(newfav);
+    }
+  };
 
   useEffect(() => {
     getData();
@@ -45,9 +57,18 @@ function App() {
         <Route
           exact
           path="/"
-          component={() => <Main data={data} scrolling={setScrolling} />}
+          component={() => (
+            <Main
+              data={data}
+              scrolling={setScrolling}
+              addFavItems={addFavItems}
+            />
+          )}
         />
-        <Route path="/favorite" component={Favorite} />
+        <Route
+          path="/favorite"
+          component={() => <Favorite favItems={favItems} />}
+        />
       </Switch>
     </BrowserRouter>
   );
