@@ -22,3 +22,7 @@
 
   overflow: hidden;
 }
+
+#btn {
+  border-radius: 30%;
+}

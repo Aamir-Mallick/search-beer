@@ -12,7 +12,7 @@ function App() {
   const [favItems, setFavItems] = useState([]);
 
   const addFavItems = (addFav) => {
-    if (favItems || !favItems.includes(addFav.id)) {
+    if (!favItems.some((items) => items.id === addFav.id)) {
       setFavItems((pre) => [...pre, addFav]);
     } else {
       let newfav = favItems.filter((x) => {

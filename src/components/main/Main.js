@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./mainStyle.css";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Form, Card, Container } from "react-bootstrap";
+import { Form, Card, Button } from "react-bootstrap";
 
 function Main(props) {
   // window.addEventListener("scroll", () => {
@@ -47,15 +47,12 @@ function Main(props) {
                 <Card.Text className="card-text-body">
                   {items.description}
                 </Card.Text>
-                <Container>
-                  <Form.Check
-                    type="checkbox"
-                    label="favorite"
-                    onClick={() => {
-                      toggleFavorite(items);
-                    }}
-                  />
-                </Container>
+                <Button
+                  id="btn"
+                  onClick={() => {
+                    toggleFavorite(items);
+                  }}
+                ></Button>
               </Card.Body>
             </Card>
           );

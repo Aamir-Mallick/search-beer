@@ -1,0 +1,29 @@
+.favorite-main-body {
+  margin: 30px auto;
+  height: 400px;
+}
+
+.fav-img {
+  width: 70px;
+  height: 150px;
+  margin: 0px auto;
+}
+.favorite-inner-body {
+  overflow: hidden;
+
+  display: inline-block;
+  height: 100px;
+}
+
+.favorite-title {
+  height: 30px;
+
+  overflow: hidden;
+}
+
+.favorite-text-body {
+  overflow: hidden;
+
+  display: inline-block;
+  height: 100px;
+}
