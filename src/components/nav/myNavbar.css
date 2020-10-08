@@ -5,3 +5,9 @@
 .title {
   cursor: pointer;
 }
+.title {
+  border: 3px solid blue;
+}
+.title:hover {
+  color: white;
+}
