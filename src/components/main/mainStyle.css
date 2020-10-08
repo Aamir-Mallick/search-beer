@@ -1,0 +1,24 @@
+.mainPage-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-main-body {
+  margin: 30px auto;
+  height: 400px;
+}
+.card-img {
+  width: 70px;
+  height: 150px;
+  margin: 0px auto;
+}
+.card-text-body {
+  overflow: hidden;
+
+  display: inline-block;
+  height: 100px;
+}
+.card-title {
+  height: 30px;
+
+  overflow: hidden;
+}
