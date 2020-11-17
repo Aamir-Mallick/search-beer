@@ -22,16 +22,7 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    getData();
-    console.log("effect " + page);
-  }, [page]);
-
-  const setScrolling = () => {
-    setPage(page + 1);
-  };
-
-  const getData = () => {
+  const getMyData = () => {
     axios
       .get(`https://api.punkapi.com/v2/beers?page=${page}&per_page=12`)
       .then((getData) => {
@@ -39,6 +30,14 @@ function App() {
         console.log(fetchedData);
         setData((pre) => [...pre, ...fetchedData]);
       });
+  };
+
+  useEffect(() => {
+    getMyData();
+  }, [page]);
+
+  const setScrolling = () => {
+    setPage(page + 1);
   };
 
   const searchData = (value) => {
@@ -51,26 +50,31 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <MyNavbar searchData={searchData} homeData={getData} />
-      <Switch>
-        <Route
-          exact
-          path="/"
-          component={() => (
-            <Main
-              data={data}
-              scrolling={setScrolling}
-              addFavItems={addFavItems}
-            />
-          )}
-        />
-        <Route
-          path="/favorite"
-          component={() => <Favorite favItems={favItems} />}
-        />
-      </Switch>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <MyNavbar searchData={searchData} homeData={getMyData} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => (
+              <Main
+                data={data}
+                scrolling={setScrolling}
+                addFavItems={addFavItems}
+                favItems={favItems}
+              />
+            )}
+          />
+          <Route
+            path="/favorite"
+            component={() => (
+              <Favorite favItems={favItems} setFavItems={setFavItems} />
+            )}
+          />
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 }
 export default App;

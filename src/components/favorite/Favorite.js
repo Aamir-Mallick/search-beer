@@ -3,18 +3,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
 import "./favoriteStyle.css";
 
-function Favorite(props) {
+function Favorite({ favItems, setFavItems }) {
   const [favList, setFavList] = useState([]);
 
   useState(() => {
-    setFavList(props.favItems);
-  }, [props.favItems]);
+    setFavList(favItems);
+  }, [favItems]);
 
   const deleteHandler = (id) => {
     let newArr = favList.filter((x) => {
       return x.id !== id;
     });
-    setFavList(newArr);
+    setFavItems(newArr);
   };
 
   return (
